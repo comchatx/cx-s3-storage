@@ -41,3 +41,17 @@ it("ships its skills, its READMEs and its license, and nothing else", () => {
   expect(packed[0]!.files.map((file) => file.path).sort()).toEqual(["LICENSE", "README.md", "README.zh-CN.md", "package.json", ...shipped].sort());
   expect(manifest.files).toEqual(["skills", "README.zh-CN.md"]);
 });
+
+it("words each of the six fields the gate's manifest declares with a label in both languages, and a help line in both where it has one", () => {
+  type Words = { en: string; zh: string };
+  const fields = (manifest.comchatx as unknown as { source: { fields: Record<string, { label: Words; help?: Words }> } }).source.fields;
+  expect(Object.keys(fields)).toEqual(["endpoint", "bucket", "region", "key_id", "secret_key", "public_base"]);
+  for (const [field, { label, help, ...rest }] of Object.entries(fields)) {
+    expect(rest, field).toEqual({});
+    for (const words of [label, ...(help === undefined ? [] : [help])]) {
+      expect(Object.keys(words).sort(), field).toEqual(["en", "zh"]);
+      expect([words.en.trim(), words.zh.trim()].every((one) => one !== ""), field).toBe(true);
+    }
+  }
+  expect(Object.entries(fields).filter(([, words]) => words.help === undefined).map(([field]) => field)).toEqual(["bucket", "secret_key"]);
+});

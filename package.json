@@ -28,9 +28,8 @@
     "test": "vitest run"
   },
   "comchatx": {
-    "name": "S3",
     "description": {
-      "zh": "读取并写入你自己的 S3 兼容存储。"
+      "zh": "读写你自己的 S3 兼容存储。"
     },
     "mark": {
       "line": "layers"
@@ -39,13 +38,67 @@
     "order": 22,
     "skills": {
       "s3": {
-        "zh": "通过 S3 API 读取和修改你自己的存储桶：列出、读取、写入、复制和删除文件，分段上传，以及文件的公开地址，例如 Listing 图片的链接。"
+        "zh": "列出、读取、写入、复制和删除存储桶里的文件，分段上传大文件，并给出文件的公开地址，例如 listing 图片的链接。"
       }
     },
     "source": {
       "name": "s3-storage",
       "help": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html",
-      "aspects": {}
+      "aspects": {},
+      "fields": {
+        "endpoint": {
+          "label": {
+            "en": "Endpoint",
+            "zh": "端点"
+          },
+          "help": {
+            "en": "For example https://s3.us-east-1.amazonaws.com.",
+            "zh": "例如 https://s3.us-east-1.amazonaws.com。"
+          }
+        },
+        "bucket": {
+          "label": {
+            "en": "Bucket",
+            "zh": "存储桶"
+          }
+        },
+        "region": {
+          "label": {
+            "en": "Region",
+            "zh": "区域"
+          },
+          "help": {
+            "en": "For example us-east-1, or auto for Cloudflare R2.",
+            "zh": "例如 us-east-1，Cloudflare R2 填 auto。"
+          }
+        },
+        "key_id": {
+          "label": {
+            "en": "Access key ID",
+            "zh": "访问密钥 ID"
+          },
+          "help": {
+            "en": "cx can use only the buckets this key reaches.",
+            "zh": "cx 只能使用这个密钥能访问的存储桶。"
+          }
+        },
+        "secret_key": {
+          "label": {
+            "en": "Secret access key",
+            "zh": "秘密访问密钥"
+          }
+        },
+        "public_base": {
+          "label": {
+            "en": "Public address",
+            "zh": "公开地址"
+          },
+          "help": {
+            "en": "Where anyone can open your bucket's files, for example https://images.example.com.",
+            "zh": "存储桶文件对外公开的网址，例如 https://images.example.com。"
+          }
+        }
+      }
     }
   },
   "dependencies": {
