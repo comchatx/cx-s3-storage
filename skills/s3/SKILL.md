@@ -15,6 +15,7 @@ The provider's reference is the S3 API's: <https://docs.aws.amazon.com/AmazonS3/
 
 - No `--origin`: the door sends only to the saved endpoint, and a request naming an origin is refused.
 - Paths are path-style: the bucket first, then the key, `/<bucket>/<key>`. The bucket the seller saved is theirs to use by default; another bucket on the same endpoint is reached when the key allows it.
+- A key the door can reach has no path segment that, once decoded, is empty or holds a space, `/`, `\`, `%`, `?`, `#` or a control character: a key with a space, such as `my image.jpg`, or a trailing `/` is refused before anything is sent, so write keys without them; `+`, `=` and non-ASCII letters go as written.
 - Each `--query` is one `name=value` pair, sent in order; an operation's word with no value is `name=`, as `uploads=`.
 - The door writes `x-amz-date`, `x-amz-content-sha256` and `authorization`; a request naming either of the first two is refused. A `GET` or `HEAD` with a body, `TRACE`, `CONNECT` and `TRACK` are not sent.
 - A request body is at most 193,536 bytes; a larger `--body` is refused before anything is sent, naming the bound.
