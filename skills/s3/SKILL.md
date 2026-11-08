@@ -6,19 +6,19 @@ description: The seller's own S3-compatible object storage (Amazon S3, Cloudflar
 S3 is an open door through `cx raw`; read cx-sources first. The door sends any S3 request to the endpoint the seller saved, its method, path, query, headers and body as written, signs it with the seller's key, and lands the provider's reply as the provider gave it. It is what a local S3 client does, and the seller's key decides which buckets and objects a request reaches. The platform charges nothing; the provider bills the seller's own account. If S3 is off, the seller turns its plugin on in Plugins.
 
 ```sh
-cx raw s3 --method GET --path /<bucket> --query list-type=2 --query prefix=listings/
+cx raw s3 --origin field:endpoint --method GET --path /<bucket> --query list-type=2 --query prefix=listings/
 ```
 
 The provider's reference is the S3 API's: <https://docs.aws.amazon.com/AmazonS3/latest/API/API_Operations_Amazon_Simple_Storage_Service.html>.
 
 ## Requests
 
-- No `--origin`: the door sends only to the saved endpoint, and a request naming an origin is refused.
+- Every request names `--origin field:endpoint`, the door's own name for the endpoint the seller saved; it is not an address, and the door sends only there. A request naming an address, or no origin, is refused. Each request in the table below takes it too.
 - Paths are path-style: the bucket first, then the key, `/<bucket>/<key>`. The bucket the seller saved is theirs to use by default; another bucket on the same endpoint is reached when the key allows it.
-- A key the door can reach has no path segment that, once decoded, is empty or holds a space, `/`, `\`, `%`, `?`, `#` or a control character: a key with a space, such as `my image.jpg`, or a trailing `/` is refused before anything is sent, so write keys without them; `+`, `=` and non-ASCII letters go as written.
 - Each `--query` is one `name=value` pair, sent in order; an operation's word with no value is `name=`, as `uploads=`.
 - The door writes `x-amz-date`, `x-amz-content-sha256` and `authorization`; a request naming either of the first two is refused. A `GET` or `HEAD` with a body, `TRACE`, `CONNECT` and `TRACK` are not sent.
-- A request body is at most 193,536 bytes; a larger `--body` is refused before anything is sent, naming the bound.
+- A key goes as written, percent-encoded: a space as `%20`, a folder marker with its trailing `/`. A segment `.` or `..` is refused.
+- A request body is at most 10 MiB (10,485,760 bytes); a larger `--body` is refused before anything is sent, naming the bound, and a larger file goes in parts.
 
 | Task | Request |
 |---|---|
@@ -33,7 +33,7 @@ A list answers XML; past 1,000 keys it carries `NextContinuationToken`, which th
 
 ## Multipart
 
-`POST /<bucket>/<key>?uploads=` answers an `UploadId`; `PUT ...?partNumber=<n>&uploadId=<id>` sends a part; `POST ...?uploadId=<id>` with the parts' XML completes it, and `DELETE ...?uploadId=<id>` abandons it. S3 takes a part under 5 MiB only as the last, so with the body bound a file past 193,536 bytes cannot be uploaded from here. A part copied from an object already stored, `x-amz-copy-source` with `x-amz-copy-source-range` and no body, has no such bound.
+`POST /<bucket>/<key>?uploads=` answers an `UploadId`; `PUT ...?partNumber=<n>&uploadId=<id>` sends a part; `POST ...?uploadId=<id>` with the parts' XML completes it, and `DELETE ...?uploadId=<id>` abandons it. Each part is under the body bound, and S3 takes a part under 5 MiB only as the last. A part copied from an object already stored, `x-amz-copy-source` with `x-amz-copy-source-range` and no body, has no bound here.
 
 ## The public address
 
