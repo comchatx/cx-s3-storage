@@ -6,7 +6,7 @@ description: The seller's own S3-compatible object storage (Amazon S3, Cloudflar
 S3 is an open door through `cx raw`; read cx-sources first. The door sends any S3 request to the endpoint the seller saved, its method, path, query, headers and body as written, signs it with the seller's key, and lands the provider's reply as the provider gave it. It is what a local S3 client does, and the seller's key decides which buckets and objects a request reaches. The platform charges nothing; the provider bills the seller's own account. If S3 is off, the seller turns its plugin on in Plugins.
 
 ```sh
-cx raw s3 --origin field:endpoint --method GET --path /<bucket> --query list-type=2 --query prefix=listings/
+cx raw s3-storage --origin field:endpoint --method GET --path /<bucket> --query list-type=2 --query prefix=listings/
 ```
 
 The provider's reference is the S3 API's: <https://docs.aws.amazon.com/AmazonS3/latest/API/API_Operations_Amazon_Simple_Storage_Service.html>.

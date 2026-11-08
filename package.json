@@ -1,15 +1,15 @@
 {
-  "name": "@comchatx/cx-s3",
+  "name": "@comchatx/cx-s3-storage",
   "version": "0.1.0",
   "description": "Reads and writes your own S3-compatible storage.",
   "license": "MIT",
   "author": "ComChatX",
-  "homepage": "https://github.com/comchatx/cx-s3#readme",
+  "homepage": "https://github.com/comchatx/cx-s3-storage#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/comchatx/cx-s3.git"
+    "url": "git+https://github.com/comchatx/cx-s3-storage.git"
   },
-  "bugs": "https://github.com/comchatx/cx-s3/issues",
+  "bugs": "https://github.com/comchatx/cx-s3-storage/issues",
   "keywords": [
     "pi-package"
   ],
@@ -43,7 +43,7 @@
       }
     },
     "source": {
-      "name": "s3",
+      "name": "s3-storage",
       "help": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html",
       "aspects": {}
     }
