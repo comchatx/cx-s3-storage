@@ -55,3 +55,13 @@ it("words each of the six fields the gate's manifest declares with a label in bo
   }
   expect(Object.entries(fields).filter(([, words]) => words.help === undefined).map(([field]) => field)).toEqual(["bucket", "secret_key"]);
 });
+
+it("the card line, its Chinese and the settings labels are the signed words, and each README has no title, since the page prints the name", () => {
+  const field = manifest.comchatx as unknown as { about: string; description?: unknown; source: { fields: Record<string, { label: { en: string; zh: string } }> } };
+  expect((manifest as unknown as { description: string }).description).toBe("Stores your images in your own bucket, with links for listings.");
+  expect(field.about).toBe("把商品图片存进你自己的存储桶，生成 listing 用的链接。");
+  expect(field.description).toBeUndefined();
+  expect(field.source.fields["key_id"]!.label).toEqual({ en: "Access key ID", zh: "Access key ID" });
+  expect(field.source.fields["secret_key"]!.label).toEqual({ en: "Secret access key", zh: "Secret access key" });
+  for (const readme of ["README.md", "README.zh-CN.md"]) expect(readFileSync(join(ROOT, readme), "utf8"), readme).not.toMatch(/^# /m);
+});
