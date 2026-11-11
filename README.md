@@ -16,4 +16,4 @@ Nothing on ComChatX. Your provider bills your own account as usual.
 
 ## What it needs
 
-It installs with cx-sources, through which cx reaches every data source.
+It installs with Data Source Billing, through which cx reaches every data source.

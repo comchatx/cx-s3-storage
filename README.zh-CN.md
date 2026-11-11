@@ -16,4 +16,4 @@ ComChatX 不收费，服务商照常向你自己的账号收费。
 
 ## 需要
 
-它会和 cx-sources 一起安装，cx 通过 cx-sources 使用所有数据源。
+它会和 Data Source Billing 一起安装，cx 通过 Data Source Billing 使用所有数据源。
