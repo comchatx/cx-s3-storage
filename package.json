@@ -1,7 +1,7 @@
 {
   "name": "@comchatx/cx-s3-storage",
   "version": "0.1.0",
-  "description": "Reads and writes your own S3-compatible storage.",
+  "description": "Stores your images in your own bucket, with links for listings.",
   "license": "MIT",
   "author": "ComChatX",
   "homepage": "https://github.com/comchatx/cx-s3-storage#readme",
@@ -28,9 +28,7 @@
     "test": "vitest run"
   },
   "comchatx": {
-    "description": {
-      "zh": "读写你自己的 S3 兼容存储。"
-    },
+    "about": "把商品图片存进你自己的存储桶，生成 listing 用的链接。",
     "mark": {
       "line": "layers"
     },
@@ -75,7 +73,7 @@
         "key_id": {
           "label": {
             "en": "Access key ID",
-            "zh": "访问密钥 ID"
+            "zh": "Access key ID"
           },
           "help": {
             "en": "cx can use only the buckets this key reaches.",
@@ -85,7 +83,7 @@
         "secret_key": {
           "label": {
             "en": "Secret access key",
-            "zh": "秘密访问密钥"
+            "zh": "Secret access key"
           }
         },
         "public_base": {

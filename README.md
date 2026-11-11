@@ -1,10 +1,14 @@
-# cx-s3-storage
+cx stores images and other files in your own bucket, each with a public address a listing can use as its main image, and can list, read, copy and delete them. Amazon S3, Cloudflare R2 and other S3-compatible storage all work.
 
-This plugin connects cx to your own S3-compatible storage, such as Amazon S3, Cloudflare R2, Backblaze B2 or Wasabi. Once you connect a bucket, cx can list, read, write, copy and delete its files, and upload large ones in parts. A file cx stores in this bucket gets a public address, for use wherever a link to the file is needed, such as a listing's main image on Amazon.
+Some things you can ask:
+
+- Store these images in my bucket's listings folder, and give me each one's link.
+- Which images are in my bucket's listings folder?
+- Copy last year's images in listings to an archive folder, then delete the originals.
 
 ## Connecting your bucket
 
-Open the plugin's Settings and enter the endpoint, bucket, region, access key ID, secret access key and public address. Your provider's guide shows where to find each one. A key limited to one bucket keeps cx to that bucket. ComChatX holds your key and never gives it to cx.
+On the plugin's Settings, enter the endpoint, bucket, region, Access key ID, Secret access key and public address. Your provider's guide shows where to find each one. A key limited to one bucket keeps cx to that bucket. Your keys stay with ComChatX and are never given to cx.
 
 ## What it costs
 
