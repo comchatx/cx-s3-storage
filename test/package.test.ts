@@ -65,3 +65,8 @@ it("the card line, its Chinese and the settings labels are the signed words, and
   expect(field.source.fields["secret_key"]!.label).toEqual({ en: "Secret access key", zh: "Secret access key" });
   for (const readme of ["README.md", "README.zh-CN.md"]) expect(readFileSync(join(ROOT, readme), "utf8"), readme).not.toMatch(/^# /m);
 });
+
+it("the card's name is comchatx.name, the one signed on 2026-11-11", () => {
+  const field = (JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8")) as { comchatx: { name?: unknown } }).comchatx;
+  expect(field.name).toBe("S3 Storage");
+});
