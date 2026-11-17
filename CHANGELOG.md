@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- The card's name is the one signed on 2026-11-17: "S3 File Storage" on the English page (`comchatx.name`) and 「S3 文件存储」 on the Chinese page (`comchatx.nameZh`).
+- The README, in English and Chinese, calls each plugin of ours it names by the card's name signed on 2026-11-17.
+
 ## 0.1.1
 
 - The card's name is the one signed on 2026-11-11, "S3 Storage", in `comchatx.name`, the same on the Chinese and the English page.
