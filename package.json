@@ -1,6 +1,6 @@
 {
   "name": "@comchatx/cx-s3-storage",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Stores your images in your own bucket, with links for listings.",
   "license": "MIT",
   "author": "ComChatX",
@@ -38,7 +38,8 @@
     "order": 22,
     "skills": {
       "s3": {
-        "zh": "列出、读取、写入、复制和删除存储桶里的文件，分段上传大文件，并给出文件的公开地址，例如 listing 图片的链接。"
+        "zh": "读写存储桶里的文件，给出图片等文件的公开地址。",
+        "en": "Reads and writes files in your bucket, and gives a file's public address."
       }
     },
     "source": {

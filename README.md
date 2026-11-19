@@ -1,4 +1,4 @@
-cx stores images and other files in your own bucket, each with a public address a listing can use as its main image, and can list, read, copy and delete them. Amazon S3, Cloudflare R2 and other S3-compatible storage all work.
+To change a listing's main image, Amazon needs a link to the picture that anyone can open. Connect your own cloud storage to cx, and cx stores images and other files there, each with a public link a listing can use as its main image; it can also list, read, copy and delete them. Useful for keeping and sorting product images. Amazon S3, Cloudflare R2 and other S3-compatible storage all work; providers call the place a bucket.
 
 Some things you can ask:
 
@@ -13,7 +13,3 @@ On the plugin's Settings, enter the endpoint, bucket, region, Access key ID, Sec
 ## What it costs
 
 Nothing on ComChatX. Your provider bills your own account as usual.
-
-## What it needs
-
-It installs with [Data Source Core](https://www.npmjs.com/package/cx-sources), through which cx reaches every data source.
