@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+- The README's first paragraph, in Chinese, is the one signed on 2026-11-18 (「改 listing 的主图时，亚马逊要的是一个谁都能打开的图片链接。……服务商把存文件的地方叫「存储桶」。」), and in English the paragraph of the same meaning ("To change a listing's main image, Amazon needs a link to the picture that anyone can open. … providers call the place a bucket.").
+- The README's "What it needs" section leaves, in both languages, heading and all, as signed on 2026-11-18. The Plugins page draws what installs with it.
+- The skill's line is the one signed on 2026-11-17, in `comchatx.skills.s3` as `zh` 「读写存储桶里的文件，给出图片等文件的公开地址。」 and `en` "Reads and writes files in your bucket, and gives a file's public address.". `SKILL.md`'s `description` is unchanged.
+
 ## 0.1.2
 
 - The card's name is the one signed on 2026-11-17: "S3 File Storage" on the English page (`comchatx.name`) and 「S3 文件存储」 on the Chinese page (`comchatx.nameZh`).
