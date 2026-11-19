@@ -1,6 +1,6 @@
 {
   "name": "@comchatx/cx-s3-storage",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Stores your images in your own bucket, with links for listings.",
   "license": "MIT",
   "author": "ComChatX",
@@ -28,7 +28,8 @@
     "test": "vitest run"
   },
   "comchatx": {
-    "name": "S3 Storage",
+    "name": "S3 File Storage",
+    "nameZh": "S3 文件存储",
     "about": "把商品图片存进你自己的存储桶，生成 listing 用的链接。",
     "mark": {
       "line": "layers"
