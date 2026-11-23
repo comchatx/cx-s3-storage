@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4
+
+- The tile's mark on the Plugins page is the signed drawing.
+
 ## 0.1.3
 
 - The README's first paragraph, in Chinese, is the one signed on 2026-11-18 (「改 listing 的主图时，亚马逊要的是一个谁都能打开的图片链接。……服务商把存文件的地方叫「存储桶」。」), and in English the paragraph of the same meaning ("To change a listing's main image, Amazon needs a link to the picture that anyone can open. … providers call the place a bucket.").
